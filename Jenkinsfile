@@ -9,6 +9,21 @@ pipeline {
 
     stage('Build image') {
       steps {
+        
+        script {
+          def scmVars = checkout([
+          $class: 'GitSCM'
+          ])
+
+          echo "scmVars.GIT_COMMIT"
+          echo "${scmVars.GIT_COMMIT}"
+
+          env.GIT_COMMIT = scmVars.GIT_COMMIT
+          echo "env.GIT_COMMIT"
+          echo "${env.GIT_COMMIT}"
+        }
+
+
         sh "docker build -t your-app:${GIT_SHA} ."
       }
     }
