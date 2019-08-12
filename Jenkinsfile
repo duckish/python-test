@@ -21,10 +21,9 @@ pipeline {
           env.GIT_COMMIT = scmVars.GIT_COMMIT
           echo "env.GIT_COMMIT"
           echo "${env.GIT_COMMIT}"
+          sh "docker build -t your-app:${env.GIT_COMMIT} ."
         }
 
-
-        sh "docker build -t your-app:${GIT_SHA} ."
       }
     }
         
