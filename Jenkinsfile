@@ -7,11 +7,11 @@ pipeline {
       }   
     }
 
-  stage('Build image') {
-            steps {
-                   sh "docker build -t your-app:${GIT_SHA} ."
-                }
-            }
-        }
+    stage('Build image') {
+      steps {
+        sh "docker build -t your-app:${GIT_SHA} ."
+      }
+    }
+        
   }
 }
